@@ -1,0 +1,87 @@
+<!-- {{>page-header}} -->
+{{^overrideHeader}}
+<header class="navbar navbar-default navbar-fixed-top" style="height: auto;">
+  <div class="row navigator">
+    {{#header.forwardBtn}}
+    <a href="#{{header.forwardBtn}}" class="forward">
+      {{#header.forwardBtnIcon}}
+        <i class="fa fa-{{header.forwardBtnIcon}}"></i>
+      {{/header.forwardBtnIcon}}
+      {{#header.forwardText}}
+        {{header.forwardText}}
+      {{/header.forwardText}}
+    </a>
+  {{/header.forwardBtn}}
+  {{#header.homeBtn}}
+    <a href="#home" class="backward"><i class="fa fa-angle-left"></i></a>
+  {{/header.homeBtn}}
+  {{#header.backBtn}}
+    <a href="#{{header.backBtn}}" class="backward" on-tap="headerBackButton">
+      <i class="fa fa-angle-left"></i>
+    </a>
+  {{/header.backBtn}}
+
+  {{#header.title}}
+    <h1 class="navigator-title container">
+      {{header.title}}
+    </h1>
+  {{/header.title}} 
+  </div>
+</header>
+
+{{/overrideHeader}}
+<!-- {{/page-header}} -->
+
+
+<!-- {{>page-footer}} -->
+{{#showFooter}}
+  {{^isLoggedIn}}
+    <div class="navbar bg-black navbar-fixed-bottom" role="navigation">
+      <div class="row navigator-footer margin-reset">
+        <a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+            <i class="fa fa-search"></i>
+            <!-- <p>My Appointments</p> -->
+          </a>
+        <a href="#login" class="col-xs-4 col-sm-4 col-md-4 text-green padding-reset {{ activeNav == 'login' ? "active" : "" }}">
+        <i class="fa fa-sign-in"></i>
+        <!-- <p class="font-mini text-green">Log In</p> -->
+        </a>
+        <a href="#signup" class="col-xs-4 col-sm-4 col-md-4 text-yellow padding-reset {{ activeNav == 'signup' ? "active" : "" }}">
+        <i class="fa fa-edit"></i>
+        <!-- <p class="font-mini text-orange">Sign Up</p> -->
+        </a>
+      </div>
+    </div>
+  {{/isLoggedIn}}
+  
+  {{#isLoggedIn}}
+      <div class="navbar bg-black navbar-fixed-bottom" role="navigation">
+        <div class="row navigator-footer margin-reset">
+          <a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+            <i class="fa fa-search"></i>
+            <!-- <p>My Appointments</p> -->
+          </a>
+          <a href="#appointments" class="col-xs-4 col-sm-4 col-md-4 text-purple padding-reset {{ activeNav == 'appointments' ? "active" : "" }}">
+            <i class="fa fa-user"></i>
+            <!-- <p>My Appointments</p> -->
+          </a>
+          <a href="#settings" class="col-xs-4 col-sm-4 col-md-4 text-blue padding-reset {{ activeNav == 'settings' ? "active" : "" }}">
+            <i class="fa fa-gear"></i>
+            <!-- <p>Settings</p> -->
+          </a>
+        </div>
+      </div>
+  {{/isLoggedIn}}
+{{/showFooter}}
+<!-- {{/page-footer}} -->
+
+
+<div intro="fade" intro-params='{"duration":30,"easing":"easeOut"}' outro='fade' outro-params='{"from":"left","duration":30,"easing":"easeOut"}'> <!-- Plss try this class "load-in" for animation thanks -->
+{{#overrideHeader}}
+  {{>header}}
+{{/overrideHeader}}
+
+{{>page-header}}
+{{>content}}
+{{>page-footer}}
+</div>

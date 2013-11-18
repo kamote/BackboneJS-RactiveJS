@@ -1,0 +1,24 @@
+{
+  "name": "Ubook Mobile",
+  "version": "0.0.1",
+  "homepage": "https://github.com/arasam10/salon-project",
+  "authors": [
+    "Randy garces <randygarces@yahoo.com>"
+  ],
+  "description": "Awesome Ubook",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "backbone": "~1.1.0",
+    "underscore": "~1.5.2",
+    "requirejs": "~2.1.9",
+    "requirejs-text": "~2.0.10"
+  }
+}
