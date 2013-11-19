@@ -1,0 +1,26 @@
+<section class="content">
+	{{#userData}}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<img src="{{ u50 }}" alt="{{ first_name }} {{ last_name}}" class="pull-left" style="width: 60px; height: 60px">
+				<div class="push-alignment">
+					<h4>{{ first_name }} {{ last_name}}</h4>
+					<div class="text-muted">
+						<p><i class="fa fa-envelope"></i>{{ email }}</p>
+						<p><i class="fa fa-phone"></i>{{ mobile }}</p>
+					</div>
+				</div>
+		 </div>
+	</div>
+	{{/userData}}
+	<div class="btn-group btn-group-justified navigator-tab">
+		<a href="#appointments/upcoming" data-page="upcoming" proxy-tap='tabSelect' class="btn btn-default">
+			<i class="fa fa-cut"></i>
+		</a>
+		<a href="#appointments/old" data-page="old" proxy-tap='tabSelect' class="btn btn-default">
+			<i class="fa fa-calendar"></i>
+		</a>
+	</div>
+	<div class="spacer-large"></div>
+	<div id="reservation-partial-content"></div>
+</section>

@@ -1,0 +1,52 @@
+<section class="content">
+	{{#loading}}
+		<div class="loader"></div>
+	{{/loading}}
+	
+	{{^loading}}
+	{{#noresults}}
+	<div class="alert alert-info">
+		<p>No results found for <strong>{{keyword}}</strong>. Please try again.</p>
+	</div>
+	{{/noresults}}
+	{{/loading}}
+	
+	{{#results}}
+	<ul class="list-unstyled">
+		<li class="panel panel-default" style="opacity: 0" >
+			<div class="panel-body">
+				<img src="{{stylist_pic}}" alt="{{stylist_name}}" class="pull-left" width="60" style="min-width: 60px; width: 60px; height: 60px;" />
+				<div class="push-alignment">
+					<h4><a href="#stylist/{{stylist_id}}" class="tap-active">{{stylist_name}}</h4>
+					<div class="text-muted">
+						<p class="ellipsis">Works for <a href="#salon/{{branch_id}}" class="tap-active"><strong>{{branch_name}}</strong></a></p>
+						<p class="ellipsis" style="text-transform:capitalize">{{branch_city}}, Norway</p>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="clearfix" style="margin-top: 3px;">
+					<div class="col-xs-6 padding-reset" style="padding-right: 2.5px;">
+						<button data-stylist-id="{{ stylist_id }}" type="button" proxy-click="bookClick" class="btn btn-success btn-block btn-sm text-small">Book Online</button>
+					</div>
+					<div class="col-xs-6 padding-reset"  style="padding-left: 2.5px;">
+						<a href="#stylist/{{stylist_id}}" role="button" class="btn btn-info btn-block btn-sm text-small">View Profile</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<script type="text/javascript">
+ 		$(document).ready(function(){
+			$('.panel').each(function(i){
+				var row = $(this);
+				  setTimeout(function() {
+				    row.addClass('slidetoRight');
+				  }, i*200);
+			});
+		});	
+ 	</script>
+	{{/results}}
+	
+	
+</section>

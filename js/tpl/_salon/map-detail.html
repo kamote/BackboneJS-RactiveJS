@@ -1,0 +1,13 @@
+{{#salon}}
+<div class="map-content">
+<img src="{{ salon.image }}" onerror="imgError(this,'salon')" alt="{{ salon.name }}" class="pull-left" width="60px" style="min-width: 60px; width: 60px; height: 60px;" />
+	<div class="push-alignment">
+		<p class="map-content-title">{{ salon.name }}</p>
+		<div class="clearfix"><span class="pull-left"><i class="fa fa-map-marker"></i></span><p class="push-alignment" style="padding-left: 0">{{ salon.location }}</p></div>
+		<div class="clearfix"><span class="pull-left"><i class="fa fa-phone"></i></span><p class="push-alignment" style="padding-left: 0">{{ phone }}</p></div>
+	</div>
+	<div class="clearfix"></div>
+	<hr style="margin: 5px 0;" />
+	<button data-salon_branch_id="{{ salon.id }}" class="btn-bookViaSalonMap btn btn-sm btn-block btn-success">Book Online</button>
+</div>
+{{/salon}}

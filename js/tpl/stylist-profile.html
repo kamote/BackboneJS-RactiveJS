@@ -1,0 +1,38 @@
+{{#stylist}}
+<section class="content">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<img src="{{ u32 }}" alt="{{ first_name }} {{ last_name }}" class="pull-left" style="width: 60px; height: 60px; margin-bottom: 5px;">
+			<div class="push-alignment clearfix">
+				<h4>{{ first_name }} {{ last_name }}</h4>
+				<div class="text-muted">
+					<p class="ellipsis"><i class="fa fa-briefcase"></i> Works for <b><a href="#salon/{{salon_branch_id}}" class="tap-active">{{ salon_branch_name }}</a></b></p>
+				</div>
+			</div>
+			<div class="spacer-small"></div>
+			<button type="button" proxy-click="bookClick" class="btn btn-success btn-block btn-sm text-small">Book Online</button>
+		</div>
+	</div>
+	
+	<div class="btn-group btn-group-justified navigator-tab">
+	<a href="#stylist/{{ id }}/services" data-page="services" proxy-tap='tabSelect' class="btn btn-default">
+		<i class="fa fa-list-ul"></i>
+		<!-- <div>Services</div> -->
+	</a>
+	<a href="#stylist/{{ id }}/opening-hours" data-page="opening-hours" proxy-tap='tabSelect' class="btn btn-default">
+		<i class="fa fa-clock-o"></i>
+		<!-- <div>Opening Hours</div> -->
+	</a>
+	<a href="#stylist/{{ id }}/information" data-page="information" proxy-tap='tabSelect' class="btn btn-default">
+		<i class="fa fa-info"></i>
+		<!-- <div>Information</div> -->
+	</a>
+	<!-- <a href="#stylist/{{ id }}/contact" data-page="contact" proxy-tap='tabSelect' class="btn btn-default">
+		<i class="icon-phone"></i>
+		<div>Contact</div>
+	</a> -->
+	</div>
+		<div class="spacer-large"></div>
+	<div id="stylist-partial-content"></div>
+</section>
+{{/stylist}}

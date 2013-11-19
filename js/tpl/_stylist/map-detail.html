@@ -1,0 +1,14 @@
+{{#stylist}}
+<div class="map-content">
+<img src="{{ u32 }}" alt="{{ first_name }} {{ last_name }}" class="pull-left" style="width: 60px; height: 60px;">
+	<div class="push-alignment">
+		<h4>{{ first_name }} {{ last_name }}</h4>
+		<div class="text-muted">
+			<div class="clearfix"><span class="pull-left"><i class="fa fa-briefcase"></i></span> <p class="push-alignment" style="padding-left: 0">Works for <b><a href="#salon/{{salon_branch_id}}" class="tap-active">{{ salon_branch_name }}</a></b></p></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<hr style="margin: 5px 0;" />
+	<button type="button" data-stylist_id="{{ stylist.id }}" class="btn-bookViaStylistMap  btn btn-success btn-block btn-sm text-small">Book Online</button>
+</div>
+{{/stylist}}

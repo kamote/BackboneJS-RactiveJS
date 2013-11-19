@@ -1,0 +1,36 @@
+<h4 style="margin-left: 5px;">Past Appointments</h4>
+<div class="list-group">
+	{{#appointments: i}}
+		<a href="#/appointments/upcoming/{{ id }}" 
+		data-id="{{id}}" 
+		data-appointment="{{{ JSON.stringify(appointments[i]) }}}" 
+		data-index-key ="{{i}}" 
+		proxy-click="viewAppointmentClick" 
+		class="list-group-item clearfix" 
+		style="padding: 5px">
+			<div class="row">
+				<div class="col-xs-11 col-sm-11">
+					{{ service_name }}
+					<div>
+						<span class="text-success">
+							{{ length }}mins {{ cost }}kr
+						</span> | <span class="label-new">{{ getStatus(status) }}</span>
+						<!-- classes for label 
+						
+						.label-new 			- for new appoinment
+						.label-serving 		- for serving clients
+						.label-served		- done for the serving
+						.label-waiting		- for client waiting to be serving 
+						.label-cancel		- appointment cancel
+
+						.label-busy			- for client tag as busy or working
+						.label-available	- for employees tag as available
+						
+						note* remove this once you implemented it -->
+					</div>
+				</div>
+			</div>
+			<div class="arrow"><i class="fa fa-angle-right"></i></div>
+		</a>
+	{{/appointments}}
+</div>

@@ -6,10 +6,10 @@ define([
   'ractive',
   // Using the Require.js text! plugin, we are loaded raw text
   // which will be used as our views primary template
-  'text!templates/layouts/default.html'
+  'text!tpl/layouts/page.html'
 ], function($, _, Backbone, Ractive, pageTemplate){
   var RactiveView = new Ractive({
-    el: '#container',
+    el: '#app-container',
     template: pageTemplate,
     partials: {},
     setPartial: function(name, template) {

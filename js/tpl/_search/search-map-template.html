@@ -1,0 +1,13 @@
+{{#result}}
+<div class="map-content">
+<img src="{{ salon_branch_image }}" onerror="imgError(this,'salon')" alt="{{ salon_branch_name }}" class="pull-left" width="60px" style="min-width: 60px; width: 60px; height: 60px;" />
+	<div class="push-alignment">
+		<p class="map-content-title">{{ result.salon_branch_name }}</p>
+		<div class="clearfix"><span class="pull-left"><i class="fa fa-map-marker"></i></span><p class="push-alignment" style="padding-left: 0">{{ result.salon_branch_location }}</p></div>
+		<div><span class="pull-left"><i class="fa fa-phone"></i></span><p class="push-alignment" style="padding-left: 0">{{ result.salon_branch_phone }}</p></div>
+	</div>
+	<div class="clearfix"></div>
+	<hr style="margin: 5px 0;" />
+	<button proxy-click="bookClick" data-salon_branch_id="{{ result.salon_branch_id }}" class="btn-bookViaMap btn btn-sm btn-block btn-success">Book Online</button>
+</div>
+{{/result}}

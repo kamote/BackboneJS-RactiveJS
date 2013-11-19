@@ -1,0 +1,157 @@
+<style type="text/css">
+	.navigator-footer {
+		right: 0;
+		left: 0;
+		bottom: 0;
+		position: fixed;
+		width: 100%;
+	}
+
+
+</style>
+
+<script type="text/javascript">
+$(function(){
+	$(window).scroll(function(event) {
+		if ($(this).scrollTop() > 50) {
+			$('.navigator-footer').css({
+				'position'	: 'fixed',
+				'width'		: '100%'
+			});
+			$('.navigator-footer').slideUp('fast');
+		} else {
+			$('.navigator-footer').css({
+				'position'	: 'fixed',
+				'width'		: '100%'
+			});
+			$('.navigator-footer').slideDown('fast');
+		}
+	});
+
+	$('form').click(function(event) {
+		$('.navigator-footer').slideUp('fast');
+	});
+});
+
+</script>
+
+<header class="navbar navbar-default navbar-fixed-top" style="height: auto;">
+	<div class="row navigator">
+		<a href="#{{header.backBtn}}" class="backward"><i class="fa fa-angle-left"></i></a>
+		<h1 class="navigator-title container">
+			Sign Up
+		</h1>
+	</div>
+</header>
+
+<div class="wrapper">
+	<section class="content forLogin">
+		{{^user.hasFB}}
+		<a href="#" proxy-click="FBregisterClick" class="btn btn-facebook btn-block">Sign Up with Facebook</a>
+
+		<div class="spacer-medium"></div><!-- spacer -->
+
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4"></div>
+			<div class="col-xs-4 col-sm-4 col-md-4 text-center">OR</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="col-xs-4 col-sm-4 col-md-4"></div>
+		</div>
+
+		<div class="spacer-medium"></div><!-- spacer -->
+		{{/user.hasFB}}
+		<form method="POST" name="form-register" id="form-register">
+			<div class="panel panel-default" style="margin-bottom: 0;">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.name ? "text-red" : "" }} fa fa-user" for="f-name"></label>
+							<input on-blur="fieldBlur" type="text" class="holder" id="f-name" placeholder="Full Name" name="name" value="{{ user.fullName }}">
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.email ? "text-red" : "text-gray" }} fa fa-envelope" for="user-email"></label>
+							<input on-blur="fieldBlur" type="email" class="holder" id="email" placeholder="Email" name="email" value="{{ user.email }}">
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.password ? "text-red" : "" }} fa fa-lock" for="password"></label>
+							<input on-blur="fieldBlur" type="password" class="holder" id="password" placeholder="Password" name="password" value="{{ user.password }}">
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.password_confirm ? "text-red" : "" }} fa fa-level-up fa-rotate-90" for="c-password"></label>
+							<input on-blur="fieldBlur" type="password" class="holder" id="c-password" placeholder="Confirm Password" name="password_confirm" value="{{ user.confirmPassword }}">
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="row" style="padding: 0 8px;">
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<div class="radio">
+						<label>
+							<input type="radio" value="1" name="gender" checked> Male
+						</label>
+					</div>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<div class="radio">
+						<label>
+							<input type="radio" value="2" name="gender"> Female
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<button proxy-click="registerClick" type="button" class="btn btn-info btn-block">Sign Up</button>
+
+			<div class="spacer-large"></div>
+			<p class="text-center"><a href="#terms-condition">See our Terms & Conditions</a></p>
+		</form>
+
+	</section>
+</div>
+
+	<!-- {{>page-footer}} -->
+{{^isLoggedIn}}
+	<div id="footer">
+		<div class="row navigator-footer margin-reset" style="background: #000">
+		  	<a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+				<i class="fa fa-search"></i>
+				<!-- <p>My Appointments</p> -->
+		    </a>
+		    <a href="#login" class="col-xs-4 col-sm-4 col-md-4 text-green padding-reset {{ activeNav == 'login' ? "active" : "" }}">
+				<i class="fa fa-sign-in"></i>
+				<!-- <p class="font-mini text-green">Log In</p> -->
+		    </a>
+		    <a href="#signup" class="col-xs-4 col-sm-4 col-md-4 text-yellow padding-reset {{ activeNav == 'signup' ? "active" : "" }}">
+				<i class="fa fa-edit"></i>
+				<!-- <p class="font-mini text-orange">Sign Up</p> -->
+		    </a>
+		</div>
+	</div>
+{{/isLoggedIn}}
+
+{{#isLoggedIn}}
+	<div id="footer">
+		<div class="row navigator-footer margin-reset" style="background: #000">
+			<a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+				<i class="fa fa-search"></i>
+				<!-- <p>My Appointments</p> -->
+			</a>
+			<a href="#appointments" class="col-xs-4 col-sm-4 col-md-4 text-purple padding-reset {{ activeNav == 'appointments' ? "active" : "" }}">
+			  	<i class="fa fa-user"></i>
+			  	<!-- <p>My Appointments</p> -->
+			</a>
+			<a href="#settings" class="col-xs-4 col-sm-4 col-md-4 text-blue padding-reset {{ activeNav == 'settings' ? "active" : "" }}">
+				<i class="fa fa-gear"></i>
+			  	<!-- <p>Settings</p> -->
+			</a>
+		</div>
+	</div>
+{{/isLoggedIn}}
+<!-- {{/page-footer}} -->
+

@@ -1,0 +1,33 @@
+<div>
+<header class="navbar navbar-default navbar-fixed-topx">
+  <div class="row navigator">
+ 		<a href="javascript:;" class="backward" on-tap="closeModal"><i class="fa fa-angle-left"></i></a>
+	<h1 class="navigator-title container">
+		{{^header.title}}
+		Service
+		{{/header.title}}	
+		{{#header.title}}
+			{{header.title}}
+		{{/header.title}}	
+	</h1>
+  </div>
+</header>
+<section class="content" intro="fadeIn" intro-params='{"duration":30,"easing":"easeOut"}' outro='fade' outro-params='{"from":"left","duration":30,"easing":"easeOut"}'>
+	{{#services:i}}
+  		<h4 style="margin-left: 5px">{{category}}</h4>
+  		<div class="list-group">
+		{{#services:j}}
+				<a proxy-click="selectServiceClick" href="" class="list-group-item" data-service="{{{ JSON.stringify(services[j]) }}}" style="padding: 5px;">
+					{{name}}
+					<div class="text-success">{{ length }}mins {{ price }}kr</div>
+					<div class="text-muted">{{ description }}</div>
+					<!-- <div class="row">
+						<div class="col-xs-7 text-muted ellipsis text-mini">{{ description }}</div>
+						<div class="col-xs-5"><span class="pull-right text-success text-mini">{{ length }}mins {{ price }}kr</span></div>
+					</div> -->
+				</a>
+		{{/services}}
+		</div>
+	{{/services}}
+</section>
+</div>

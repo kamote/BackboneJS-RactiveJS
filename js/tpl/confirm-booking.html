@@ -1,0 +1,36 @@
+<div data-role="content">
+	<ul data-role="listview" data-inset="true" class="emps-listing">
+	    <li data-icon="false">
+
+	    	<a href="" style="cursor: default; padding: 0 15px;">
+	        	<h2>{{ book.name }}</h2>
+	        	<p><b>Works for {{ book.salon.name }}</b></p>
+	        	<p>{{ book.salon.address }}</p>
+	        	<!--<span class="float-right arrow-absolute"><i class="icon-angle-right"></i></span>-->
+	    	</a>
+
+	    	<div class="spacer-small"></div>
+		</li>
+	</ul>
+
+	<ul data-role="listview" data-inset="true">
+	    <li data-icon="false"><a href="#">Service: <span class="float-right text-gray">Hair Color</span></a></li>
+	    <li data-icon="false"><a href="#">Date: <span class="float-right text-gray">Wednesday 08, 2013 @ 8:30</span></a></li>
+	    <li data-icon="false"><a href="#">Price (NOK): <span class="float-right text-gray">300</span></a></li>
+	</ul>
+
+	<ul data-role="listview" data-inset="true">
+	    <li data-icon="false"><a href="#">Full Name: <span class="float-right text-gray">Arash Samim</span></a></li>
+	    <li data-icon="false"><a href="#">Mobile Phone: <span class="float-right text-gray">+1234567890</span></a></li>
+	    <li data-icon="false"><a href="#">Email: <span class="float-right text-gray">arash_samim@gmail.com</span></a></li>
+	    <li data-icon="false"><a href="#">Note: <span class="float-right text-gray">This is my sample note</span></a></li>
+	</ul>
+
+	<div class="ui-grid-a">
+	    <div class="ui-block-a"><a href="#wrapper" data-rel="back"  data-role="button" class="btn">Edit</a></div>
+	    <div class="ui-block-b"><a proxy-click="confirmClick" href="#" data-transition="slide" data-role="button" class="btn btn-success">Confirm Booking</a></div>
+	</div><!-- /grid-a -->
+	<!-- <a href="booking_confirm.html" data-transition="slide" data-role="button" class="btn btn-success">Confirm Booking</a> -->
+	</div>
+
+</div><!-- /content -->

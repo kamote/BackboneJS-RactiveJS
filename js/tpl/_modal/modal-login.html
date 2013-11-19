@@ -1,0 +1,112 @@
+
+<div id="modal-login">
+
+	<style type="text/css">
+		.forLogin {
+			margin: 0 7px;
+			padding: 55px 0 44px;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			var height = $(window).height() - 50;
+			var getheight = $('.forLogin').css({
+				height: height
+			});
+		});
+
+	</script>
+
+	<header class="navbar navbar-default navbar-fixed-topx">
+	  <div class="row navigator">
+	 		<a href="javascript:;" class="backward" on-tap="hideModal"><i class="fa fa-angle-left"></i></a>
+		<h1 class="navigator-title container">
+			Login
+		</h1>
+	  </div>
+	</header>
+	<section class="content forLogin">
+		
+	  <h2 class="sub-title text-center">Booking has never been simpler.</h2>
+	  <form class="" role="form" method="POST" name="form-login-modal" id="form-login-modal">
+	      <a href="#" proxy-click="FBloginClick" class="btn btn-facebook btn-block">Log In with Facebook</a>
+	
+	      <div class="spacer-medium"></div><!-- spacer -->
+	
+	      <div class="row">
+	            <div class="col-xs-12 text-center">OR</div>
+	      </div>
+	
+	      <div class="spacer-medium"></div><!-- spacer -->
+	
+	      	<div class="panel panel-default">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.email ? "text-red" : "text-gray" }} fa fa-envelope" for="email-login"></label>
+							<input on-blur="fieldBlur" type="email" class="holder" id="email-login" placeholder="Email" name="email" value="{{ login.email }}">
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="addon">
+							<label class="{{ fErrors.password ? "text-red" : "" }} fa fa-lock" for="password-login"></label>
+							<input on-blur="fieldBlur" type="password" class="holder" id="password-login" placeholder="Password" name="password" value="{{ login.password }}">
+						</div>
+					</li>
+				</ul>
+			</div>
+	
+	      <div class="row">
+	        <div class="col-xs-6"><button proxy-click="loginClick" type="submit" class="btn btn-success btn-block">Log In</button></div>
+	        <div class="col-xs-6"><a href="#signup" class="btn btn-info btn-block">Sign Up</a></div>
+	      </div>
+	
+	      <div class="spacer-large"></div>
+	      <p class="text-center"><a href="">Forgot Password?</a></p>
+	      <p class="text-center"><a href="">See our Terms &amp; Conditions</a></p>
+	  </form>
+	</section>
+
+	<!-- {{>page-footer}} -->
+	{{^isLoggedIn}}
+		<div id="footer">
+			<div class="row navigator-footer margin-reset" style="background: #000">
+			  	<a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+					<i class="fa fa-search"></i>
+					<!-- <p>My Appointments</p> -->
+			    </a>
+			    <a href="#login" class="col-xs-4 col-sm-4 col-md-4 text-green padding-reset {{ activeNav == 'login' ? "active" : "" }}">
+					<i class="fa fa-sign-in"></i>
+					<!-- <p class="font-mini text-green">Log In</p> -->
+			    </a>
+			    <a href="#signup" class="col-xs-4 col-sm-4 col-md-4 text-yellow padding-reset {{ activeNav == 'signup' ? "active" : "" }}">
+					<i class="fa fa-edit"></i>
+					<!-- <p class="font-mini text-orange">Sign Up</p> -->
+			    </a>
+			</div>
+		</div>
+	{{/isLoggedIn}}
+
+	{{#isLoggedIn}}
+		<div id="footer">
+			<div class="row navigator-footer margin-reset" style="background: #000">
+				<a href="#home" class="col-xs-4 col-sm-4 col-md-4 text-orange padding-reset {{ activeNav == 'home' ? "active" : "" }}">
+					<i class="fa fa-search"></i>
+					<!-- <p>My Appointments</p> -->
+				</a>
+				<a href="#appointments" class="col-xs-4 col-sm-4 col-md-4 text-purple padding-reset {{ activeNav == 'appointments' ? "active" : "" }}">
+				  	<i class="fa fa-user"></i>
+				  	<!-- <p>My Appointments</p> -->
+				</a>
+				<a href="#settings" class="col-xs-4 col-sm-4 col-md-4 text-blue padding-reset {{ activeNav == 'settings' ? "active" : "" }}">
+					<i class="fa fa-gear"></i>
+				  	<!-- <p>Settings</p> -->
+				</a>
+			</div>
+		</div>
+	{{/isLoggedIn}}
+	<!-- {{/page-footer}} -->
+
+</div>

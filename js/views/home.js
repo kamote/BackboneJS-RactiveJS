@@ -1,24 +1,19 @@
-// Filename: views/project/list
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'ractive',
-  'views/PageView',
-  // Using the Require.js text! plugin, we are loaded raw text
-  // which will be used as our views primary template
-  'text!templates/layouts/default.html',
-  'text!templates/home.html'
-], function($, _, Backbone, Ractive, PageView, pageTemplate, homeTemplate){
-  console.log(PageView);
-  alert('kamote');
-  var AppViewHome = PageView.extend({
+define(function(require) {
+  var $          = require('jquery'),
+  _              = require('underscore'),
+  Backbone       = require('backbone'),
+  Ractive        = require('ractive'),
+  AppViewPage    = require('views/AppViewPage'),
+  tpl            = require('text!tpl/home.html'),
+  AppModelSearch = require('models/search');
+
+  var AppViewHome = AppViewPage.extend({
     id:"home",
     initialize: function(options) {
       this.options = options || {};
-      PageView.prototype.initialize.call(this);
+      AppViewPage.prototype.initialize.call(this);
       _.bindAll(this, "rdone");
-      //this.model = new AppModelSearch();
+      this.model = new AppModelSearch();
       this.rsetOptions({ complete: this.rdone });
       this.rsetData({
         activeNav: 'home',
@@ -29,7 +24,6 @@ define([
     },
 
     rdone: function(r) {
-      alert('xx');
       var self = this;
       r.on('searchClick', function(event) {
         event.original.preventDefault();
@@ -39,12 +33,24 @@ define([
         
         app.navigate(searchTarget, {trigger: true});
       });
+
+      r.on('searchTap', function(event){
+        event.original.preventDefault();
+        var elem = document.getElementById('extendSearch');
+        elem.style.height = "100%";
+      });
+
+       r.on('hideExtendedSearch', function(event){
+        event.original.preventDefault();
+        var elem = document.getElementById('extendSearch');
+        elem.style.height = "0";
+      });
     },
 
     render: function() {
       
       var self = this;
-      self.addPartials('content', 'templates/home.html', function(){
+      self.addPartials('content', 'tpl/home.html', function(){
         
         self.createPage();
         

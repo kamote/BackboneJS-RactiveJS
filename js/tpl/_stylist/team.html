@@ -1,0 +1,19 @@
+<div class="list-group">
+{{#data:i}}
+  <a href="#stylist/{{id}}" class="list-group-item clearfix" style="padding: 5px">
+    <div class="row">
+      <div class="col-xs-3 "><img src="{{ u32 }}" alt="" class="pull-left" style="width: 60px"></div>
+      <div class="col-xs-8 padding-reset">
+        <div class="ellipsis" style="margin-left: -7px;">
+          <h4>{{ first_name }} {{ last_name }}</h4>
+          <div class="text-muted text-mini">
+            <p>Works for "{{ salon_branch_name }}"</p>
+            <p>{{ salon_branch_location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow"><i class="icon-angle-right"></i></div>
+  </a>
+{{/data}}
+</div>

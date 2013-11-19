@@ -1,0 +1,30 @@
+<div>
+<header class="navbar navbar-default navbar-fixed-topx">
+	<div class="row navigator">
+	<a href="javascript:;" class="backward" on-tap="hideModal"><i class="fa fa-angle-left"></i></a>
+	<h1 class="navigator-title container">
+		{{^header.title}}
+		Change Mobile
+		{{/header.title}} 
+		{{#header.title}}
+			{{header.title}}
+		{{/header.title}} 
+	</h1>
+	</div>
+</header>
+<section class="content">
+	<form name="form-change-password" id="form-change-password">
+		<div class="panel panel-default">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="addon">
+						<label class="{{ fErrors.mobile ? "text-red" : "" }} fa fa-mobile fa-lg" for="mobile"></label>
+						<input on-blur="fieldBlur" type="text" class="holder" id="mobile" placeholder="Mobile Number" name="mobile" value="{{ mobile }}">
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<button proxy-click="doChangeMobileClick" type="button" class="btn btn-info btn-block">Update</button>
+	</form>
+</section>

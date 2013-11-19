@@ -1,10 +1,16 @@
-// Filename: router.js
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'views/home'
-], function($, _, Backbone, AppViewHome) {
+define(function(require) {
+  
+  var $           = require('jquery'),
+  _               = require('underscore'),
+  Backbone        = require('backbone'),
+  AppViewBasePage = require('views/AppViewBasePage'),
+  tpl             = require('text!tpl/layouts/page.html'),
+  AppViewHome     = require('views/home'),
+  AppViewLogin    = require('views/login'),
+  AppViewSearch   = require('views/search'),
+  AppViewModalLogin = require('views/modal-login'),
+  AppModelAuth    = require('models/auth');
+
   var AppRouter = Backbone.Router.extend({
     routes: {
       ""              : "home",
@@ -65,8 +71,8 @@ define([
       this.existingPage = null;
       this.models = {};
       this.pages = {};
-      //this.models['auth'] = new AppModelAuth();
-      //this.pages.modalLogin = new window.AppViewModalLogin();
+      this.models['auth'] = new AppModelAuth();
+      this.pages.modalLogin = new AppViewModalLogin();
     },
 
     storeRoute: function() {
@@ -97,7 +103,6 @@ define([
     },
     
     changePage:function (page) {
-      alert('x');
       //close modals
       var hasModal = $('[id^="app-modal-container-"]'); 
       if(hasModal.length > 0) {
@@ -122,7 +127,7 @@ define([
       if(old != undefined) {
         console.log("old", old);
         //old.$el.hide();
-        old.cleanup(true);
+        //old.teardown(true);
       }
       //page.$el.hide();
       page.render();
@@ -135,11 +140,7 @@ define([
             scrollTime = 100;
           }
       var self = this;
-      setTimeout(function(){
-        if(old != undefined) {
-          self.cleanup(old, true);
-        } 
-      }, 10);
+     
         
         //$('.modal').modal('hide');
         

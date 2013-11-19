@@ -1,0 +1,103 @@
+<div>
+<header class="navbar navbar-default navbar-fixed-topx">
+	<div class="row navigator">
+		<a href="#stylist/{{appointment.stylist_id}}/map" proxy-click="showMapClick"class="forward">
+			<i class="fa fa-map-marker"></i>
+		</a>
+		<a href="javascript:;" class="backward" on-tap="closeModal">
+			<i class="fa fa-angle-left"></i>
+		</a>
+	<h1 class="navigator-title container">
+		{{^header.title}}
+			Appointment Details
+		{{/header.title}}	
+		{{#header.title}}
+			{{header.title}}
+		{{/header.title}}	
+	</h1>
+	</div>
+</header>
+<section class="content">
+	{{#appointment}}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<img src="{{ u32 }}" alt="{{ appointment.stylist_first_name }} {{ stylist_last_name }}" class="pull-left" style="width: 60px">
+			<div class="push-alignment">
+				<h4>
+					<a href="#stylist/{{stylist_id}}" >
+						{{ appointment.stylist_first_name }} {{ stylist_last_name }}
+					</a>
+				</h4>
+				<div class="text-muted">
+					<p class="ellipsis">
+						<i class="fa fa-briefcase"></i>
+						Works for 
+						<a href="#salon/{{salon_branch_id}}" class="tap-active">
+							<strong>{{salon_branch_name}}</strong>
+						</a>
+					</p>
+					<p class="ellipsis">
+						<i class="fa fa-map-marker"></i>
+						{{ salon_branch_location }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<ul class="list-group booking-form">
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-th-list" style="margin-top: 3px;"></i></div>
+				<p class="ellipsis" style="width: 88%; margin: 0;">{{ service_name }} - {{ service_description }}</p>
+			</li>
+
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-calendar"></i></div>{{ dateFormat(start_date) }}
+				<span class="pull-right text-mini" ></span>
+			</li>
+
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-clock-o"></i></div>{{ dateFormat(start_date, 'HH:mm') }} - {{dateFormat(end_date, 'HH:mm')}} 
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-tag"></i></div>{{ cost }} 
+			</li>
+			<li class="list-group-item clearfix"><div class="pull-left"><i class="fa fa-comment"></i></div>
+				<p class="ellipsis" style="width: 88%; margin: 0;">{{ notes }}</p>
+			</li>
+		</ul>
+	</div>
+
+	<div class="panel panel-default">
+		{{#userData}}
+		<ul class="list-group booking-form">
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-user"></i></div>
+				<span class="form-label">{{ first_name }} {{ last_name }}</span>
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-mobile"></i></div>
+				<span class="form-label"> {{ appointment.mobile }}</span>
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-envelope"></i></div>
+				<span class="form-label"> {{ email }}</span>
+			</li>
+		</ul>
+		{{/userData}}
+	</div>
+	{{#showCancelAppointment}}
+		{{#isPassIn24HourRule(start_date)}}
+			{{#status}}
+			<div class="row">
+				<div class="col-xs-12">
+					<button proxy-click="cancelAppointment" data-schedule-id="{{id}}" type="submit" class="btn btn-danger btn-block">Cancel Appointment</button>
+				</div>
+			</div>
+			{{/status}}
+		{{/isPassIn24HourRule}}
+	{{/showCancelAppointment}}
+	{{/appointment}}
+</section>
+</div>

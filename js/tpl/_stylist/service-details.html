@@ -1,0 +1,39 @@
+<div>
+<header class="navbar navbar-default navbar-fixed-topx">
+	<div class="row navigator">
+		<a href="javascript:;" class="backward" on-tap="closeModal"><i class="fa fa-angle-left"></i></a>
+		<a href="" on-tap="bookServiceClick" class="forward" style="font-weight:bold;">Select</a>
+	<h1 class="navigator-title container">
+		{{^header.title}}
+		Service Details
+		{{/header.title}}	
+		{{#header.title}}
+			{{header.title}}
+		{{/header.title}}	
+	</h1>
+	</div>
+</header>
+<section class="content" intro="fade" intro-params='{"duration":30,"easing":"easeOut"}' outro='fade' outro-params='{"from":"left","duration":30,"easing":"easeOut"}'>
+	{{#service}}
+	<h4 style="margin-left: 5px;">{{ category }}</h4>
+	<p style="margin-left: 5px;">{{ name }}</p>
+	<div class="panel panel-default">
+		<ul class="list-group booking-form">
+			<li class="list-group-item clearfix">
+				<span class="pull-left"><i class="fa fa-file-text-o"></i></span>
+				<p style="overflow: hidden; width: auto; padding-left: 3px;">{{ description }}</p>
+			</li>
+			<li class="list-group-item">
+				<i class="fa fa-clock-o"></i>
+				{{ length }}mins
+			</li>
+			<li class="list-group-item">
+				<i class="fa fa-tag"></i>
+				{{ price }}kr
+			</li>
+		</ul>
+	</div>
+
+	{{/service}}
+</section>
+</div>

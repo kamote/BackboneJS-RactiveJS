@@ -1,0 +1,77 @@
+<header class="navbar navbar-default navbar-fixed-topx">
+	<div class="row navigator">
+		<a href="javascript:;" class="backward" on-tap="closeModal"><i class="fa fa-angle-left"></i><span>Edit</span></a>
+		<a href="#" proxy-click="confirmClick" class="forward onBook {{ complete ? "text-green" : "text-muted pe-none" }}">Confirm</a>
+		<h1 class="navigator-title container">
+			{{^header.title}}
+			Booking Online
+			{{/header.title}}	
+			{{#header.title}}
+				{{header.title}}
+			{{/header.title}}	
+		</h1>
+	</div>
+</header>
+<section class="content" intro="fade" intro-params='{"duration":30,"easing":"easeOut"}' outro='fade' outro-params='{"from":"left","duration":30,"easing":"easeOut"}'>
+	{{#stylist}}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		<img src="{{ u32 }}" alt="{{ first_name }} {{ last_name }}" class="pull-left" style="width: 60px">
+		<div class="push-alignment">
+		  <h4>{{ first_name }} {{ last_name }}</h4>
+		  <div class="text-muted">
+			<p class="ellipsis"><i class="fa fa-briefcase"></i>Works for "{{ salon_branch_name}}"</p>
+			<p class="ellipsis"><i class="fa fa-map-marker"></i>{{ salon_branch_location }}</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	{{/stylist}}
+	<div class="panel panel-default">
+		<ul class="list-group booking-form">
+			<li class="list-group-item">
+				{{#service}}
+				<div class="pull-left"><i class="fa fa-th-list" style="margin-top: 3px;"></i></div>
+				<p class="ellipsis" style="width: 88%; margin: 0;">{{ service.name }} - {{ service.description }}</p>
+				{{/service}}
+			</li>
+			<li class="list-group-item">
+				{{#date}}
+					<div class="pull-left"><i class="fa fa-calendar"></i></div>{{ dateFormat(date) }}
+				{{/date}}
+			</li>
+			<li class="list-group-item">
+				{{#time}}
+				<div class="pull-left"><i class="fa fa-clock-o"></i></div>{{ time.start }} - {{ time.end }}
+				{{/time}}
+			</li>
+			<li class="list-group-item">
+				{{#stylist}}
+					{{#service}}
+						<div class="pull-left"><i class="fa fa-tag"></i></div>{{ service.price }} 
+					{{/service}}
+				{{/stylist}}
+			</li>
+			<li class="list-group-item clearfix"><div class="pull-left"><i class="fa fa-comment"></i></div>
+				<p class="ellipsis" style="width: 88%; margin: 0;">{{ notes }}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="panel panel-default">
+		{{#userData}}
+		<ul class="list-group booking-form">
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-user"></i></div><span class="form-label">{{ first_name }} {{ last_name }}</span>
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-mobile"></i></div>
+				<span class="form-label"> {{ booking_mobile }}</span>
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-envelope"></i></div><span class="form-label"> {{ email }}</span>
+			</li>
+		</ul>
+		{{#userData}}
+	</div>
+	</div>
+</section>

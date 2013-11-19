@@ -1,0 +1,116 @@
+<header class="navbar navbar-default navbar-fixed-topx">
+  	<div class="row navigator">
+		<a href="javascript:;" class="backward" on-tap="closeModal"><i class="fa fa-angle-left"></i></a>
+		<a href="#" proxy-click="bookClick" class="forward onBook {{ complete ? "text-green" : "text-muted pe-none" }}">Book</a>
+		<h1 class="navigator-title container">
+			{{^header.title}}
+			Book Online
+			{{/header.title}}	
+			{{#header.title}}
+				{{header.title}}
+			{{/header.title}}	
+		</h1>
+  	</div>
+</header>
+<section class="content" intro="fade" intro-params='{"duration":30,"easing":"easeOut"}' outro='fade' outro-params='{"from":"left","duration":30,"easing":"easeOut"}'>
+	{{#stylist}}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		<img src="{{ u32 }}" alt="{{ first_name }} {{ last_name }}" class="pull-left" style="width: 60px">
+		<div class="push-alignment">
+		  <h4>{{ first_name }} {{ last_name }}</h4>
+		  <div class="text-muted">
+			<p class="ellipsis"><i class="fa fa-briefcase"></i>Works for "{{ salon_branch_name}}"</p>
+			<p class="ellipsis"><i class="fa fa-map-marker"></i>{{ salon_branch_location }}</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	{{/stylist}}
+	<div class="panel panel-default">
+		<ul class="list-group booking-form">
+			<a href="#" proxy-click="editServiceClick" class="list-group-item">
+				{{#service}}
+				<div class="pull-left"><i class="fa fa-th-list text-green" style="margin-top: 3px;"></i></div>
+				<span class="pull-right text-mini"><i class="fa fa-angle-right"></i></span>
+				<p class="ellipsis" style="width: 88%; margin: 0;">{{ service.name }} - {{ service.description }}</p>
+				{{/service}}
+
+				{{^service}}
+				<div class="pull-left"><i class="fa fa-th-list"></i></div><span class="form-label">Service:</span>
+				<span class="pull-right text-mini"><i class="fa fa-angle-right"></i></span>
+				{{/service}}
+			</a>
+			{{#isSalon}}
+			<a href="#" proxy-click="editStylistClick" class="list-group-item">
+				{{#stylist}}
+					<div class="pull-left"><i class="fa fa-group text-green pull-left" style="margin-top: 3px;"></i></div>
+					<span class="pull-right text-mini" proxy-click="editStylistClick"><i class="fa fa-angle-right"></i></span>
+					<p class="ellipsis" style="width: 88%; margin: 0;">{{ stylist.first_name }} {{ stylist.last_name }}</p>
+				{{/stylist}}
+
+				{{^stylist}}
+					<div class="pull-left"><i class="fa fa-group"></i></div><span class="form-label">Stylist:</span>
+					<span class="pull-right text-mini" proxy-click="editStylistClick"><i class="fa fa-angle-right"></i></span>
+				{{/stylist}}
+
+			</a>
+			{{/isSalon}}
+			<a href="#" proxy-click="editDateClick" class="list-group-item">
+				{{#date}}
+					<div class="pull-left"><i class="fa fa-calendar text-green"></i></div>{{ dateFormat(date) }}
+					<span class="pull-right text-mini" ><i class="fa fa-angle-right"></i></span>
+				{{/date}}
+
+				{{^date}}
+					<div class="pull-left"><i class="fa fa-calendar"></i></div><span class="form-label">Date:</span>
+					<span class="pull-right text-mini" ><i class="fa fa-angle-right"></i></span>
+				{{/date}}
+			</a>
+			<a href="#" proxy-click="editTimeClick" class="list-group-item">
+				{{#time}}
+				<div class="pull-left"><i class="fa fa-clock-o text-green"></i></div>{{ time.start }} - {{ time.end }} 
+				<span class="pull-right text-mini" ><i class="fa fa-angle-right"></i></span>
+				{{/time}}
+
+				{{^time}}
+				<div class="pull-left"><i class="fa fa-clock-o"></i></div><span class="form-label">Time:</span>
+				<span class="pull-right text-mini" ><i class="fa fa-angle-right"></i></span>
+				{{/time}}
+
+			</a>
+			<li class="list-group-item">
+				{{#stylist}}
+					{{#service}}
+						<div class="pull-left"><i class="fa fa-tag text-green"></i></div>{{ service.price }} 
+					{{/service}}
+					{{^service}}
+						<div class="pull-left"><i class="fa fa-tag"></i></div><span class="form-label">Price (NOK):</span> 
+					{{/service}}
+				{{/stylist}}
+				{{^stylist}}
+					<div class="pull-left"><i class="fa fa-tag"></i></div><span class="form-label">Price (NOK):</span> 
+				{{/stylist}}
+			</li>
+			<li class="list-group-item clearfix">
+				<div class="pull-left"><i class="fa fa-comment text-green"></i></div><textarea id="booking-notes" class="col-xs-10" placeholder="Note:" value="{{ notes }}"></textarea>
+			</li>
+		</ul>
+	</div>
+	<div class="panel panel-default">
+		{{#userData}}
+		<ul class="list-group booking-form">
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-user text-green"></i></div><span class="form-label">{{ first_name }} {{ last_name }}</span>
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-mobile {{ booking_mobile ? "text-green" : "" }}"></i></div><input class="holder" placeholder="Mobile Phone: +" value="{{ booking_mobile }}" >
+			</li>
+			<li class="list-group-item">
+				<div class="pull-left"><i class="fa fa-envelope text-green"></i></div><span class="form-label"> {{ email }}</span>
+			</li>
+		</ul>
+		{{#userData}}
+	</div>
+  	</div>
+</section>

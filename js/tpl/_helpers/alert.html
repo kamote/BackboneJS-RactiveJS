@@ -1,0 +1,8 @@
+<div class="alert alert-{{ status }} {{ dismissable ? " alert-dismissable" : "" }} " style="
+  position: relative;
+">
+  {{#dismissable}}
+  	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  {{/dismissable}}
+  {{ content }}
+</div>

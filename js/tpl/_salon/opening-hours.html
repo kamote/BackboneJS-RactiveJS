@@ -1,0 +1,16 @@
+{{#data}}
+<div class="list-group">
+{{#data.availability:i}}
+	<li class="list-group-item {{ status ? "" : "disable" }}" style="padding-left: 5px; padding-right: 5px;">{{ day_label }} <span class="pull-right text-muted">{{ parseTime(start_time, 'HH:mm') }} - {{ parseTime(end_time, 'HH:mm') }}</span></li>
+{{/data.availability}}
+</div>
+<h4 style="margin-left: 5px;">Day Off / Holiday</h4>
+<div class="list-group">
+{{#data.holiday:i}}
+	<li class="list-group-item disable" style="padding-left: 5px; padding-right: 5px;">{{parseDate(date)}} <span class="pull-right text-muted" >All Day</span></li>
+{{/data.holiday}}
+</div>
+{{/data}}
+{{#loading}}
+<div class="loader"></div>
+{{/loading}}

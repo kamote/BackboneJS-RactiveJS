@@ -1,0 +1,40 @@
+<section class="content">
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		<img src="{{ salon.image }}" onerror="imgError(this,'salon')" alt="{{ salon.name }}" class="pull-left" style="width: 60px; height: 60px; margin-bottom: 5px">
+		<div class="push-alignment clearfix">
+		  	<h4>{{ salon.name }}</h4>
+			<div class="text-muted">
+				<p class="ellipsis"><i class="fa fa-map-marker"></i>{{ salon.location }}</p>
+				<p class="ellipsis"><i class="fa fa-phone"></i>{{ salon.phone }}</p>
+			</div>
+		</div>
+		<button type="button" proxy-click="bookClick" class="btn btn-success btn-block btn-sm text-small">Book Online</button>
+	  </div>
+	</div>
+	
+	<div class="btn-group btn-group-justified navigator-tab">
+	<a href="#salon/{{ salon.id }}/services" data-page="services" proxy-tap='tabSelect' class="btn btn-default">
+	  <i class="fa fa-list-ul"></i>
+	  <!-- <div>Services</div> -->
+	</a>
+	<a href="#salon/{{ salon.id }}/opening-hours" data-page="opening-hours" proxy-tap='tabSelect' class="btn btn-default">
+	  <i class="fa fa-clock-o"></i>
+	  <!-- <div>Opening Hours</div> -->
+	</a>
+	<a href="#salon/{{ salon.id }}/team" data-page="team" proxy-tap='tabSelect' class="btn btn-default">
+	  <i class="fa fa-briefcase"></i>
+	  <!-- <div>Team</div> -->
+	</a>
+	<a href="#salon/{{ salon.id }}/information" data-page="information" proxy-tap='tabSelect' class="btn btn-default">
+	  <i class="fa fa-info"></i>
+	  <!-- <div>Information</div> -->
+	</a>
+<!-- 	<a href="#salon/{{ salon.id }}/contact" data-page="contact" proxy-tap='tabSelect' class="btn btn-default">
+	  <i class="icon-phone"></i>
+	  <div>Contact</div>
+	</a> -->
+	</div>
+	<div class="spacer-large"></div>
+	<div id="salon-parial-content"></div>
+</section>

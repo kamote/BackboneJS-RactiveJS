@@ -1,0 +1,16 @@
+<header class="navbar navbar-default navbar-fixed-top" style="height: auto;">
+	<div class="row navigator">
+		{{#header.backBtn}}
+			<a href="#{{header.backBtn}}" class="backward"><i class="fa fa-angle-left"></i></a>
+		{{/header.backBtn}}
+		{{#header.title}}
+			<h1 class="navigator-title container">
+				{{header.title}}
+			</h1>
+		{{/header.title}}
+		{{^header.title}}
+			<h1 class="navigator-title container">Result on Map</h1>
+		{{/header.title}}
+	</div>
+</header>
+<div id="map_search_result_canvas"></div>
